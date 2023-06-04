@@ -27,7 +27,7 @@ namespace MagicVilla_API.Controllers
             return Ok(VillaStore.villaList);
         }
        
-        [HttpGet("{id:int}", Name = "GetVilla")] //:int le podemos indicar el tipo de dato que esperamos
+        [HttpGet("{id:int}", Name = "GetVillaV1")] //:int le podemos indicar el tipo de dato que esperamos
                                                  //Name = "GetVilla" para poder usar este endpoint en el metodo post - SaveVilla 
         [ProducesResponseType(StatusCodes.Status200OK)]           //es lo mismo que [ProducesResponseType(200)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]   //[ProducesResponseType(400)]
@@ -83,7 +83,7 @@ namespace MagicVilla_API.Controllers
 
             VillaStore.villaList.Add(villaDto);
 
-            return CreatedAtRoute("GetVilla", new { id = villaDto.Id }, villaDto);
+            return CreatedAtRoute("GetVillaV1", new { id = villaDto.Id }, villaDto);
 
         }
 

@@ -1,20 +1,18 @@
 ﻿using MagicVilla_API.Data;
 using MagicVilla_API.Models;
 using MagicVilla_API.Models.Dto;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v2/[controller]")]
     [ApiController]
-    public class TownController : ControllerBase
+    public class VillaV2Controller : ControllerBase
     {
         private readonly ILogger<VillaController> _logger;
         private readonly ApplicationDbContext _db;
 
-        public TownController(ILogger<VillaController> logger, ApplicationDbContext db)
+        public VillaV2Controller(ILogger<VillaController> logger, ApplicationDbContext db)
         {
             _logger = logger;
             _db = db;
@@ -28,7 +26,7 @@ namespace MagicVilla_API.Controllers
             return Ok(_db.Villas.ToList());
         }
 
-        [HttpGet("{id:int}", Name = "GetTown")]
+        [HttpGet("{id:int}", Name = "GetVillaV2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -88,7 +86,7 @@ namespace MagicVilla_API.Controllers
             _db.Villas.Add(models);
             _db.SaveChanges(); //para que los cambios se reflejen en la base de datos.
 
-            return CreatedAtRoute("GetTown", new { id = villaDto.Id }, villaDto);
+            return CreatedAtRoute("GetVillaV2", new { id = villaDto.Id }, villaDto);
 
         }
 

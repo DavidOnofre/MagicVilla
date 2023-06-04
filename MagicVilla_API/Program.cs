@@ -1,3 +1,4 @@
+using MagicVilla_API;
 using MagicVilla_API.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//Se registra el servicio para mapear
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(); // para poder usar el servicio de jsonpatch en el servicio PATCH
