@@ -26,7 +26,7 @@ namespace MagicVilla_API.Controllers
 
         [HttpGet("id:int", Name = "GetVilla")] //:int le podemos indicar el tipo de dato que esperamos
                                                //Name = "GetVilla" para poder usar este endpoint en el metodo post - SaveVilla 
-        [ProducesResponseType(StatusCodes.Status200OK)]           //es lo mismo [ProducesResponseType(200)]
+        [ProducesResponseType(StatusCodes.Status200OK)]           //es lo mismo que [ProducesResponseType(200)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]   //[ProducesResponseType(400)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]     //[ProducesResponseType(404)]
         public ActionResult<VillaDto> GetVilla(int id)
