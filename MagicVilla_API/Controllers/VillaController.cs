@@ -11,9 +11,12 @@ namespace MagicVilla_API.Controllers
     {
         private readonly ILogger<VillaController> _logger; //a las variables privadas se las suele nombrar con _
 
-        public VillaController(ILogger<VillaController> logger)
+        private readonly ApplicationDbContext _db;
+
+        public VillaController(ILogger<VillaController> logger, ApplicationDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         [HttpGet]
@@ -23,9 +26,9 @@ namespace MagicVilla_API.Controllers
             _logger.LogInformation("Consultando todas las villas");
             return Ok(VillaStore.villaList);
         }
-
-        [HttpGet("id:int", Name = "GetVilla")] //:int le podemos indicar el tipo de dato que esperamos
-                                               //Name = "GetVilla" para poder usar este endpoint en el metodo post - SaveVilla 
+       
+        [HttpGet("{id:int}", Name = "GetVilla")] //:int le podemos indicar el tipo de dato que esperamos
+                                                 //Name = "GetVilla" para poder usar este endpoint en el metodo post - SaveVilla 
         [ProducesResponseType(StatusCodes.Status200OK)]           //es lo mismo que [ProducesResponseType(200)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]   //[ProducesResponseType(400)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]     //[ProducesResponseType(404)]

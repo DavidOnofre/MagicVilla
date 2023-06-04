@@ -17,7 +17,6 @@ namespace MagicVilla_API.Data
 
 
         //alimentar con datos a la base de datos
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Villa>().HasData(
