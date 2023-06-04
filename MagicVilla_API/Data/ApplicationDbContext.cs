@@ -14,6 +14,7 @@ namespace MagicVilla_API.Data
         }
 
         public DbSet<Villa> Villas { get; set; }
+        public DbSet<NumeroVilla> NumeroVillas { get; set; }
 
 
         //alimentar con datos a la base de datos
